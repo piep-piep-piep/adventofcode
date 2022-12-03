@@ -2,6 +2,7 @@ import os
 
 class Rucksack:
     def __init__(self, items):
+        items = items.strip()
         self.allItems = items
         half_len = int(len(items)/2)
         self.firstCompartment = items[:half_len]
@@ -24,7 +25,7 @@ def main():
 
     total = 0
     for line in lines:
-        r = Rucksack(line.strip())
+        r = Rucksack(line)
         total = total + r.get_priority(r.get_wrong_item())
 
     print(total)
