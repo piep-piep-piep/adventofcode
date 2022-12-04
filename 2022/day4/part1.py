@@ -5,7 +5,7 @@ class Assignment:
     def __init__(self, start:int, end:int):
         self.start = start
         self.end = end
-    def check_if_fully_contained(self, a:Assignment):
+    def fully_containes(self, a:Assignment):
         return self.start <= a.start and self.end >= a.end
 
 def main():
@@ -18,7 +18,7 @@ def main():
         line = line.split(",")
         a1 = Assignment(int(line[0].split("-")[0]), int(line[0].split("-")[1]))
         a2 = Assignment(int(line[1].split("-")[0]), int(line[1].split("-")[1]))
-        if a1.check_if_fully_contained(a2) or a2.check_if_fully_contained(a1):
+        if a1.fully_containes(a2) or a2.fully_containes(a1):
             count += 1
 
     print(count)
