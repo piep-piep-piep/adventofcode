@@ -1,5 +1,6 @@
 import os
 from collections import deque
+import re
 
 
 def main():
@@ -33,10 +34,14 @@ def parse_moves(moves_input):
 
     moves = [list() for i in range(len(lines))]
     for index, line in enumerate(lines):
-        line = line.split(" ")
-        moves[index].append(int(line[1]))
-        moves[index].append(int(line[3])-1)
-        moves[index].append(int(line[5])-1)
+        pattern = r"move (\d+) from (\d+) to (\d+)"
+        line_list = []
+        for index2, value in enumerate(re.match(pattern, line).groups()):
+            if index2 == 0:
+                line_list.append(int(value))
+            else:
+                line_list.append(int(value)-1)
+        moves[index] = line_list
     return(moves)
 
 
